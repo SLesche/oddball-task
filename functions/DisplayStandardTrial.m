@@ -14,13 +14,15 @@ end
 
 next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_ITI,Trial(expTrial).ITI);
 
-if is_target
-    Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixTarget, 0, 1);
-else
-    Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixNonTarget, 0, 1);
+if Trial(expTrial).time_FIX > 0
+    if is_target
+        Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixTarget, 0, 1);
+    else
+        Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixNonTarget, 0, 1);
+    end
+    
+    next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_FIX,Trial(expTrial).FIX);
 end
-
-next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_FIX,Trial(expTrial).FIX);
 
 if is_target
     Trial(expTrial).time_memset = TextCenteredOnPos(expinfo,expinfo.TargetStim,expinfo.XPos(5),expinfo.YPos(5), expinfo.Colors.black , next_flip, Trial(expTrial).StimMarkerTarget);

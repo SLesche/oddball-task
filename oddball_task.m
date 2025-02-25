@@ -63,14 +63,14 @@ setMarker(expinfo, expinfo.Marker.MatlabStart)
 
 %% Experimental Blocks
 blocks = struct();
-blocks.block_num = 1:6;
+blocks.block_num = 1:2;
 
 if test_run
-    blocks.n_practice_trials = [1, 1, 1, 1, 1, 1];
-    blocks.n_exp_trials = [1, 1, 1, 1, 1, 1];
+    blocks.n_practice_trials = [1, 1];
+    blocks.n_exp_trials = [1, 1];
 else
-    blocks.n_practice_trials = [1, 0, 0, 0, 0, 0];
-    blocks.n_exp_trials = [1, 6, 6, 6, 6, 6];
+    blocks.n_practice_trials = [1, 1];
+    blocks.n_exp_trials = [10, 10];
 end
 
 expinfo.blocks = blocks;
