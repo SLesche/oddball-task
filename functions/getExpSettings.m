@@ -79,16 +79,9 @@ function expinfo = getExpSettings(expinfo)
     
     %% Defining trials to be conducted
     % Specify how many trials should be conducted
-    expinfo.SetSize = 3;
-    expinfo.maxsetsize = 3;
-    expinfo.Stimuli = [1:4, 6:9];
-    expinfo.targetProbability = 0.5;
-    
-    expinfo.conditionInfo = 5;
-    
-    expinfo.nPracTrials=5;
-    
-    expinfo.nExpTrials=60;
+    expinfo.TargetStim = "X";
+    expinfo.NonTargetStim = "O";
+    expinfo.targetProbability = 0.2;
     
     %% Colors
     expinfo.Colors.bgColor = [140 140 140]; % white
@@ -147,9 +140,9 @@ function expinfo = getExpSettings(expinfo)
     expFile  = 'exp.csv';  % extension fot the expreimental trial data
     
     % Adjusting the file-names to a different name for each subject
-    expinfo.pracFile = [expinfo.DataFolder,'Sternberg_A2K_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',pracFile];
-    expinfo.expFile  = [expinfo.DataFolder,'Sternberg_A2K_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',expFile];
-    expinfo.datafiles = [expinfo.DataFolder,'Sternberg_A2K_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',pracFile];
+    expinfo.pracFile = [expinfo.DataFolder,'Oddball_Exp28_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',pracFile];
+    expinfo.expFile  = [expinfo.DataFolder,'Oddball_Exp28_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',expFile];
+    expinfo.datafiles = [expinfo.DataFolder,'Oddball_Exp28_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',pracFile];
 end 
 %% End of Function
 % This function was programmed by Gidon T. Frischkorn, as part of a

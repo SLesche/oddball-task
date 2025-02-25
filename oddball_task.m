@@ -59,14 +59,14 @@ writetable(cell2table({expinfo.subject, expinfo.subjectName, expinfo.subjectSex,
 setMarker(expinfo, expinfo.Marker.MatlabStart)
 
 %% 1.General Instructions
-displayInstruction(expinfo, expinfo.InstFolder, 'welcome')
+%displayInstruction(expinfo, expinfo.InstFolder, 'welcome')
 
 %% Experimental Blocks
 blocks = struct();
 blocks.block_num = 1:6;
 
 if test_run
-    blocks.n_practice_trials = [0, 1, 1, 1, 1, 1];
+    blocks.n_practice_trials = [1, 1, 1, 1, 1, 1];
     blocks.n_exp_trials = [1, 1, 1, 1, 1, 1];
 else
     blocks.n_practice_trials = [10, 0, 0, 0, 0, 0];
@@ -76,6 +76,7 @@ end
 expinfo.blocks = blocks;
 
 for block_num = start_from:max(expinfo.blocks.block_num)
+    %% Init Variables
     expinfo = getMarkers(expinfo, block_num);
     n_exp_trials = expinfo.blocks.n_exp_trials(block_num);
     n_practice_trials = expinfo.blocks.n_practice_trials(block_num);
@@ -96,9 +97,11 @@ for block_num = start_from:max(expinfo.blocks.block_num)
     
     repeat_practice = 1;
     repetition_num = 1;
+
+    %% Practice Blocks
     while repeat_practice
         % Show instruction Slide
-        displayInstruction(expinfo, expinfo.InstFolder, expinfo.blocks.instruction_pattern(block_num));
+        %displayInstruction(expinfo, expinfo.InstFolder, expinfo.blocks.instruction_pattern(block_num));
     
         % Loop through practice trials
         setMarker(expinfo, expinfo.Marker.PracStart)
@@ -109,15 +112,15 @@ for block_num = start_from:max(expinfo.blocks.block_num)
 
         n_targets = sum(practice_mat, 1);
 
-        getResponseNTargets(expinfo, block_num, n_targets);
+        getResponseNTargets(expinfo, n_targets);
     
         setMarker(expinfo, expinfo.Marker.PracEnd)
         
         % Show instruction Slide
-        last_response = displayInstruction(expinfo, expinfo.InstFolder, expinfo.blocks.start_pattern(block_num), 1);
-        
+        %last_response = displayInstruction(expinfo, expinfo.InstFolder, expinfo.blocks.start_pattern(block_num), 1);
+        last_response = 1;
         if last_response == 9
-            practice_mat = zeros(n_practice_trials, expinfo.SetSize + 3);
+            practice_mat = zeros(n_practice_trials, 1);
     
             practice_mat = generateOddballBlock(n_practice_trials, expinfo.targetProbability)';
 
@@ -132,6 +135,7 @@ for block_num = start_from:max(expinfo.blocks.block_num)
         end
     end
 
+    %% Experimental Block
     setMarker(expinfo, expinfo.Marker.BlockStart)
     
     pause_50 = 0;
@@ -163,13 +167,16 @@ for block_num = start_from:max(expinfo.blocks.block_num)
             ExpTrials = DisplayStandardTrial(expinfo, ExpTrials, itrial, block_num, 0);
         end
     end
+
+    getResponseNTargets(expinfo, n_targets);
+
     %% For last trial ITI
     WaitSecs(expinfo.MinITIduration+rand(1)*expinfo.ITIjitter);
     
     setMarker(expinfo, expinfo.Marker.BlockEnd)
 
     % Show Block End Slide
-    displayInstruction(expinfo,expinfo.InstFolder, 'end_block');
+    %displayInstruction(expinfo,expinfo.InstFolder, 'end_block');
 end
 
 %% End Experiment

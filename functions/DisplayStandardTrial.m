@@ -5,10 +5,24 @@ if ~exist('repetition_num', 'var')
 end
 
 %% Trial Procedure
-Trial(expTrial).time_ITI = ScreenFlip(expinfo,[],expinfo.Marker.ITI, 0);
+is_target = Trial(expTrial).isTarget;
+if is_target
+    Trial(expTrial).time_ITI = ScreenFlip(expinfo,[],expinfo.Marker.ITITarget, 0);
+else
+    Trial(expTrial).time_ITI = ScreenFlip(expinfo,[],expinfo.Marker.ITINonTarget, 0);
+end
+
 next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_ITI,Trial(expTrial).ITI);
 
-if Trial(expTrial).isTarget
+if is_target
+    Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixTarget, 0);
+else
+    Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixNonTarget, 0);
+end
+
+next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_FIX,Trial(expTrial).FIX);
+
+if is_target
     Trial(expTrial).time_memset = TextCenteredOnPos(expinfo,expinfo.TargetStim,expinfo.XPos(5),expinfo.YPos(5), expinfo.Colors.black , next_flip, Trial(expTrial).StimMarkerTarget);
 else
     Trial(expTrial).time_memset = TextCenteredOnPos(expinfo,expinfo.NonTargetStim,expinfo.XPos(5),expinfo.YPos(5), expinfo.Colors.black , next_flip, Trial(expTrial).StimMarkerNonTarget);
@@ -16,9 +30,7 @@ end
 
 next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_memset,Trial(expTrial).StimDuration(istimulus));
 
-if Trial(expTrial).hasResponse    
-    is_target = Trial(expTrial).isTarget;
-    
+if Trial(expTrial).hasResponse        
     % Get Answer from participant
     [ACC, response, correct, RT] = getResponseOddball(expinfo, is_target);
     
@@ -32,6 +44,9 @@ if Trial(expTrial).hasResponse
     if Trial(expTrial).(field_rt) < expinfo.MinRT
         WaitSecs(expinfo.MinRT-Trial(expTrial).(field_rt));
     end
+    clearScreen(expinfo);
+else
+    clearScreen(expinfo,next_flip);
 end
 
 SaveTable = orderfields(Trial);

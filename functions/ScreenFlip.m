@@ -12,6 +12,11 @@ if ~exist('flip','var') || isempty(flip)
     flip = 0;
 end
 
+%Screen('Flip',expinfo.window);
+if has_fixation
+    Screen('DrawText', expinfo.window ,'+',expinfo.xCenter-0.25*expinfo.GridSize ,expinfo.yCenter-0.50*expinfo.GridSize, expinfo.Colors.black);
+end
+
 % Flip Screen
 if ~exist('when','var')
     % Flip window immediately

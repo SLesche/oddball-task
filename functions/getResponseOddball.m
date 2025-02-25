@@ -1,4 +1,4 @@
-function [ACC, response, correct, RT] = getresponseProbe(expinfo, Trial, expTrial)
+function [ACC, response, correct, RT] = getResponseOddball(expinfo, Trial, expTrial)
     % Initialize variables
     tic; % Start internal MATLAB stopwatch
     start = GetSecs; % Get the current system time

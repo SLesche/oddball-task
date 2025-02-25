@@ -29,8 +29,9 @@ function [expinfo] = getMarkers(expinfo, block_num)
     Marker.IncorrRespTarget = 250;
     Marker.CorrRespNonTarget = 151;
     Marker.IncorrRespNonTarget = 251;
-        
-    Marker.Miss = 252;
+    Marker.CorrResponseOpenQuestion = 152;
+    Marker.IncorrResponseOpenQuestion = 252;
+    Marker.Miss = 253;
     
     %% Write Markers into expinfo object
     expinfo.Marker = Marker;
