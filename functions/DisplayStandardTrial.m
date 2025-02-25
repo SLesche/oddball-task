@@ -7,17 +7,17 @@ end
 %% Trial Procedure
 is_target = Trial(expTrial).isTarget;
 if is_target
-    Trial(expTrial).time_ITI = ScreenFlip(expinfo,[],expinfo.Marker.ITITarget, 0);
+    Trial(expTrial).time_ITI = ScreenFlip(expinfo,[],expinfo.Marker.ITITarget, 0,0);
 else
-    Trial(expTrial).time_ITI = ScreenFlip(expinfo,[],expinfo.Marker.ITINonTarget, 0);
+    Trial(expTrial).time_ITI = ScreenFlip(expinfo,[],expinfo.Marker.ITINonTarget, 0, 0);
 end
 
 next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_ITI,Trial(expTrial).ITI);
 
 if is_target
-    Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixTarget, 0);
+    Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixTarget, 0, 1);
 else
-    Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixNonTarget, 0);
+    Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixNonTarget, 0, 1);
 end
 
 next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_FIX,Trial(expTrial).FIX);
@@ -28,7 +28,7 @@ else
     Trial(expTrial).time_memset = TextCenteredOnPos(expinfo,expinfo.NonTargetStim,expinfo.XPos(5),expinfo.YPos(5), expinfo.Colors.black , next_flip, Trial(expTrial).StimMarkerNonTarget);
 end
 
-next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_memset,Trial(expTrial).StimDuration(istimulus));
+next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_memset,Trial(expTrial).StimDuration);
 
 if Trial(expTrial).hasResponse        
     % Get Answer from participant

@@ -15,7 +15,7 @@ addpath('functions', 'instructions', 'data');
 TaskName = 'Oddball Task';
 start_from = 1; % Add later block if something crashed
 is_eeg_connected = 0; % Test local = 0; test in lab = 1;
-test_run = 1;
+test_run = 0;
 
 % Define variables to be specified when the experiment starts.
 vars = {'sub','sex','name'};
@@ -70,7 +70,7 @@ if test_run
     blocks.n_exp_trials = [1, 1, 1, 1, 1, 1];
 else
     blocks.n_practice_trials = [10, 0, 0, 0, 0, 0];
-    blocks.n_exp_trials = [60, 60, 60, 60, 20, 20];
+    blocks.n_exp_trials = [6, 6, 6, 6, 6, 6];
 end
 
 expinfo.blocks = blocks;

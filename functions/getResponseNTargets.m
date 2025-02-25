@@ -13,7 +13,7 @@ function [ACC, response, correct, RT] = getResponseNTargets(expinfo, n_targets)
     correct = n_targets;
 
     % Loop until maximum reaction time is exceeded
-    response = Ask(window, message,  expinfo.Colors.bgColor,  expinfo.Colors.black, 'GetString',[300 225 1600 600], 'center');
+    response = Ask(expinfo.window, message,  expinfo.Colors.bgColor,  expinfo.Colors.black, 'GetString',[300 225 1600 600], 'center');
     
     response = str2double(response)
     % Handle cases where no valid key press was registered within MaxRT

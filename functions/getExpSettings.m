@@ -29,8 +29,8 @@ function expinfo = getExpSettings(expinfo)
     expinfo.ExpStopPrac = 2;
     
     %% Timing - fixed in all trials
-    expinfo.Fix_Duration = 1.4; % Dauer des Fixationskreuzes zu Beginn eines Trials
-    expinfo.Fixjitter = 0.2;
+    expinfo.Fix_Duration =0; % Dauer des Fixationskreuzes zu Beginn eines Trials
+    expinfo.Fixjitter = 0;
         
     expinfo.MinISIduration = 0.4; % Minimale Dauer des Inter-Stimulus-Intervalls (ISI)
     expinfo.ISIjitter = 0.2; % ISI Jitter = Intervall in dem das ISI variieren darf
@@ -79,10 +79,10 @@ function expinfo = getExpSettings(expinfo)
     
     %% Defining trials to be conducted
     % Specify how many trials should be conducted
-    expinfo.TargetStim = "X";
-    expinfo.NonTargetStim = "O";
+    expinfo.TargetStim = 'X';
+    expinfo.NonTargetStim = 'O';
     expinfo.targetProbability = 0.2;
-    
+
     %% Colors
     expinfo.Colors.bgColor = [140 140 140]; % white
     expinfo.Colors.green =  [0 178 30];
@@ -134,17 +134,5 @@ function expinfo = getExpSettings(expinfo)
     % PromptProvideInfos
     expinfo.InstExtension   = '.JPG';
     expinfo.DataFolder      = 'data/';
-    
-    %% datafiles and messages
-    pracFile = 'prac.csv'; % extension for the practice trial data
-    expFile  = 'exp.csv';  % extension fot the expreimental trial data
-    
-    % Adjusting the file-names to a different name for each subject
-    expinfo.pracFile = [expinfo.DataFolder,'Oddball_Exp28_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',pracFile];
-    expinfo.expFile  = [expinfo.DataFolder,'Oddball_Exp28_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',expFile];
-    expinfo.datafiles = [expinfo.DataFolder,'Oddball_Exp28_Subject',num2str(expinfo.subject),'_Session',num2str(expinfo.session),'_',pracFile];
 end 
 %% End of Function
-% This function was programmed by Gidon T. Frischkorn, as part of a
-% template for MATLAB experiments. If you have any questions please contact
-% me via mail: gidon.frischkorn@psychologie.uni-heidelberg.de
