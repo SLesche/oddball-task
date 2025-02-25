@@ -7,9 +7,10 @@ function [Trial] = makeTrials(trial_matrix, expinfo, block_num)
         Trial(trial).Subject = expinfo.subject;
         Trial(trial).TrialNum = trial;
         Trial(trial).Block = block_num;
-        Trial(trial).isTarget = trial_matrix(trial, 2);
-        %Trial(trial).targetKey = expinfo.targetKey;
-        %Trial(trial).nonTargetKey = expinfo.nonTargetKey;
+        Trial(trial).isTarget = trial_matrix(trial, 1);
+        Trial(trial).targetKey = expinfo.targetKey;
+        Trial(trial).nonTargetKey = expinfo.nonTargetKey;
+        Trial(trial).hasResponse = 0;
     end
 
     for trial = 1:n_trials
