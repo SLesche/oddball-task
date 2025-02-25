@@ -69,8 +69,8 @@ if test_run
     blocks.n_practice_trials = [1, 1, 1, 1, 1, 1];
     blocks.n_exp_trials = [1, 1, 1, 1, 1, 1];
 else
-    blocks.n_practice_trials = [10, 0, 0, 0, 0, 0];
-    blocks.n_exp_trials = [6, 6, 6, 6, 6, 6];
+    blocks.n_practice_trials = [1, 0, 0, 0, 0, 0];
+    blocks.n_exp_trials = [1, 6, 6, 6, 6, 6];
 end
 
 expinfo.blocks = blocks;

@@ -2,31 +2,37 @@ function [ACC, response, correct, RT] = getResponseNTargets(expinfo, n_targets)
 
     % Initialize variables
     tic; % Start internal MATLAB stopwatch
-    start = GetSecs; % Get the current system time
     response = -2; % Default response indicating no valid response
-
     ACC = -2; % Default accuracy indicating timeout
     RT = expinfo.MaxRT; % Default reaction time to maximum allowed time
-    
-    message = ['Wie oft ist der Zielstimulus aufgetreten?'];
-    
     correct = n_targets;
 
-    % Loop until maximum reaction time is exceeded
-    response = Ask(expinfo.window, message,  expinfo.Colors.bgColor,  expinfo.Colors.black, 'GetString',[300 225 1600 600], 'center');
-    
-    response = str2double(response)
-    % Handle cases where no valid key press was registered within MaxRT
+    message = 'Wie oft ist der Zielstimulus aufgetreten?'
+
+    % Get user input
+    response = Ask(expinfo.window, message, expinfo.Colors.black, expinfo.Colors.blue, ...
+                   'GetChar', [], 'center');
+
+    % Convert response to number and check for validity
+    response = str2double(response); 
+
+    if isnan(response)  % Handle invalid responses
+        response = -1; % Assign a default invalid response value
+    end
+
+    % Determine accuracy and send marker
     if response == n_targets
         ACC = 1;
-        RT = toc;
-        setMarker(expinfo, expinfo.Marker.CorrResponseOpenQuestion); % Send incorrect response marker
+        setMarker(expinfo, expinfo.Marker.CorrResponseOpenQuestion); % Correct marker
     else
         ACC = 0;
-        RT = toc;
         setMarker(expinfo, expinfo.Marker.IncorrResponseOpenQuestion);
     end
 
+    % Compute reaction time
+    RT = toc;
+
     % Clear keyboard buffer
     FlushEvents();
+
 end
