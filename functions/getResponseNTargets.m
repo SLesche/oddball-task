@@ -7,10 +7,10 @@ function [ACC, response, correct, RT] = getResponseNTargets(expinfo, n_targets)
     RT = expinfo.MaxRT; % Default reaction time to maximum allowed time
     correct = n_targets;
 
-    message = 'Wie oft ist der Zielstimulus aufgetreten?'
+    message = 'Wie oft ist der Zielstimulus aufgetreten? Ihre Antwort: ';
 
     % Get user input
-    response = Ask(expinfo.window, message, expinfo.Colors.black, expinfo.Colors.blue, ...
+    response = Ask(expinfo.window, message, expinfo.Colors.black, expinfo.Colors.bgColor, ...
                    'GetChar', [], 'center');
 
     % Convert response to number and check for validity
