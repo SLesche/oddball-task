@@ -1,2 +1,11 @@
-Block,FIX,FixMarkerNonTarget,FixMarkerTarget,ITI,ITIMarkerNonTarget,ITIMarkerTarget,StimDuration,StimMarkerNonTarget,StimMarkerTarget,Subject,TaskDescription,TrialNum,hasResponse,isTarget,nonTargetKey,targetKey,time_FIX,time_ITI,time_memset
-1,0,40,50,2.09411855635212,42,52,1,41,51,1,Oddball_Task,1,0,0,m,c,25751.9422705,25749.8394522,25751.9468857
+Block,FIX,FixMarkerNonTarget,FixMarkerTarget,ITI,ITIMarkerNonTarget,ITIMarkerTarget,StimDuration,StimMarkerNonTarget,StimMarkerTarget,Subject,TaskDescription,TrialNum,hasResponse,isTarget,nonTargetKey,targetKey,time_ITI,time_memset
+1,0,40,50,2.05885690813678,42,52,1,41,51,1,Oddball_Task,1,0,1,m,c,1992.4700731,1994.5213534
+1,0,40,50,1.93312974589996,42,52,1,41,51,1,Oddball_Task,2,0,1,m,c,1995.5409599,1997.4764371
+1,0,40,50,2.03081581969536,42,52,1,41,51,1,Oddball_Task,3,0,0,m,c,1998.4908369,2000.5266309
+1,0,40,50,1.9901083197005,42,52,1,41,51,1,Oddball_Task,4,0,0,m,c,2001.5433593,2003.5296679
+1,0,40,50,2.08266747230033,42,52,1,41,51,1,Oddball_Task,5,0,0,m,c,2004.5454404,2006.6317289
+1,0,40,50,2.00766848705201,42,52,1,41,51,1,Oddball_Task,6,0,1,m,c,2007.6477833,2009.6503647
+1,0,40,50,1.98853565395509,42,52,1,41,51,1,Oddball_Task,7,0,0,m,c,2010.6669063,2012.6516379
+1,0,40,50,1.90092684482681,42,52,1,41,51,1,Oddball_Task,8,0,0,m,c,2013.6692015,2015.5715578
+1,0,40,50,2.0737389410727,42,52,1,41,51,1,Oddball_Task,9,0,1,m,c,2016.588228,2018.6573855
+1,0,40,50,1.95197408057013,42,52,1,41,51,1,Oddball_Task,10,0,0,m,c,2019.6739309,2021.625889

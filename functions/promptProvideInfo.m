@@ -49,10 +49,11 @@ end
 
 if mod(expinfo.subject,2)
     expinfo.counterbal_left_right = 'left';
-    expinfo.InstFolder = 'instructions/instruction_slides_c';
+    %expinfo.InstFolder = 'instructions/instruction_slides_c';
+    expinfo.InstFolder = 'instructions/instruction_slides';
 else
     expinfo.counterbal_left_right = 'right';
-    expinfo.InstFolder = 'instructions/instruction_slides_m';
+    expinfo.InstFolder = 'instructions/instruction_slides';
 end
 
 if use(2) && ~isempty(prompt_answer{pos_use == 2})

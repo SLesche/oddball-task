@@ -1,0 +1,11 @@
+Block,FIX,FixMarkerNonTarget,FixMarkerTarget,ITI,ITIMarkerNonTarget,ITIMarkerTarget,StimDuration,StimMarkerNonTarget,StimMarkerTarget,Subject,TaskDescription,TrialNum,hasResponse,isTarget,nonTargetKey,targetKey,time_ITI,time_memset
+2,0,40,50,1.99418466970352,42,52,1,41,51,1,Oddball_Task,1,0,0,m,c,1747.4379809,1749.4407245
+2,0,40,50,1.93895285791341,42,52,1,41,51,1,Oddball_Task,2,0,0,m,c,1750.4516818,1752.3871447
+2,0,40,50,1.94553285956331,42,52,1,41,51,1,Oddball_Task,3,0,0,m,c,,
+2,0,40,50,2.08467592842065,42,52,1,41,51,1,Oddball_Task,4,0,1,m,c,,
+2,0,40,50,2.08097619373598,42,52,1,41,51,1,Oddball_Task,5,0,1,m,c,,
+2,0,40,50,1.92222384468812,42,52,1,41,51,1,Oddball_Task,6,0,0,m,c,,
+2,0,40,50,2.01897921480172,42,52,1,41,51,1,Oddball_Task,7,0,0,m,c,,
+2,0,40,50,2.04224315608674,42,52,1,41,51,1,Oddball_Task,8,0,0,m,c,,
+2,0,40,50,1.95933517464367,42,52,1,41,51,1,Oddball_Task,9,0,1,m,c,,
+2,0,40,50,2.00157165693222,42,52,1,41,51,1,Oddball_Task,10,0,0,m,c,,

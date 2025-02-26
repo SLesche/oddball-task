@@ -14,7 +14,7 @@ end
 
 next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_ITI,Trial(expTrial).ITI);
 
-if Trial(expTrial).time_FIX > 0
+if Trial(expTrial).FIX > 0
     if is_target
         Trial(expTrial).time_FIX = ScreenFlip(expinfo,next_flip,expinfo.Marker.FixTarget, 0, 1);
     else

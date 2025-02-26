@@ -59,7 +59,7 @@ writetable(cell2table({expinfo.subject, expinfo.subjectName, expinfo.subjectSex,
 setMarker(expinfo, expinfo.Marker.MatlabStart)
 
 %% 1.General Instructions
-%displayInstruction(expinfo, expinfo.InstFolder, 'welcome')
+displayInstruction(expinfo, expinfo.InstFolder, 'welcome')
 
 %% Experimental Blocks
 blocks = struct();
@@ -69,7 +69,7 @@ if test_run
     blocks.n_practice_trials = [1, 1];
     blocks.n_exp_trials = [1, 1];
 else
-    blocks.n_practice_trials = [1, 1];
+    blocks.n_practice_trials = [10, 10];
     blocks.n_exp_trials = [10, 10];
 end
 
@@ -101,7 +101,7 @@ for block_num = start_from:max(expinfo.blocks.block_num)
     %% Practice Blocks
     while repeat_practice
         % Show instruction Slide
-        %displayInstruction(expinfo, expinfo.InstFolder, expinfo.blocks.instruction_pattern(block_num));
+        displayInstruction(expinfo, expinfo.InstFolder, 'instruction');
     
         % Loop through practice trials
         setMarker(expinfo, expinfo.Marker.PracStart)
@@ -117,7 +117,7 @@ for block_num = start_from:max(expinfo.blocks.block_num)
         setMarker(expinfo, expinfo.Marker.PracEnd)
         
         % Show instruction Slide
-        %last_response = displayInstruction(expinfo, expinfo.InstFolder, expinfo.blocks.start_pattern(block_num), 1);
+        last_response = displayInstruction(expinfo, expinfo.InstFolder, 'instruction', 1);
         last_response = 1;
         if last_response == 9
             practice_mat = zeros(n_practice_trials, 1);
@@ -176,7 +176,7 @@ for block_num = start_from:max(expinfo.blocks.block_num)
     setMarker(expinfo, expinfo.Marker.BlockEnd)
 
     % Show Block End Slide
-    %displayInstruction(expinfo,expinfo.InstFolder, 'end_block');
+    displayInstruction(expinfo,expinfo.InstFolder, 'end_block');
 end
 
 %% End Experiment
