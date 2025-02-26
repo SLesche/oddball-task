@@ -55,9 +55,9 @@ SaveTable = orderfields(Trial);
 Data = struct2table(SaveTable,'AsArray',true);
 
 if isPractice == 1
-    writetable(Data,[expinfo.DataFolder,'Subject_',num2str(expinfo.subject),'Prac_Block_', num2str(block_num), '_', num2str(repetition_num), '.csv']);
+    writetable(Data,[expinfo.DataFolder,'Trial_Subject_',num2str(expinfo.subject),'Prac_Block_', num2str(block_num), '_', num2str(repetition_num), '.csv']);
 else
-    writetable(Data,[expinfo.DataFolder,'Subject_',num2str(expinfo.subject),'Exp_Block_', num2str(block_num), '_', num2str(repetition_num),'.csv']);
+    writetable(Data,[expinfo.DataFolder,'Trial_Subject_',num2str(expinfo.subject),'Exp_Block_', num2str(block_num), '_', num2str(repetition_num),'.csv']);
 end
 %
 % % Clear Screen for ITI

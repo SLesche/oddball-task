@@ -64,6 +64,10 @@ displayInstruction(expinfo, expinfo.InstFolder, 'welcome')
 %% Experimental Blocks
 blocks = struct();
 blocks.block_num = 1:2;
+blocks.n_targets = zeros(1, max(blocks.block_num)) - 2;
+blocks.response = zeros(1, max(blocks.block_num)) - 2;
+blocks.rt = zeros(1, max(blocks.block_num)) - 2;
+blocks.acc = zeros(1, max(blocks.block_num)) - 2;
 
 if test_run
     blocks.n_practice_trials = [1, 1];
@@ -112,7 +116,11 @@ for block_num = start_from:max(expinfo.blocks.block_num)
 
         n_targets = sum(practice_mat, 1);
 
-        getResponseNTargets(expinfo, n_targets);
+        [acc, response, correct, rt] = getResponseNTargets(expinfo, n_targets);
+        
+        Data = table(block_num, correct, response, acc, rt);
+
+        writetable(Data,[expinfo.DataFolder,'Oddball_Subject_',num2str(expinfo.subject),'Prac_Block_', num2str(block_num), '_', num2str(repetition_num), '.csv']);
     
         setMarker(expinfo, expinfo.Marker.PracEnd)
         
@@ -168,7 +176,11 @@ for block_num = start_from:max(expinfo.blocks.block_num)
         end
     end
 
-    getResponseNTargets(expinfo, n_targets);
+    [acc, response, correct, rt] = getResponseNTargets(expinfo, n_targets);
+        
+    Data = table(block_num, correct, response, acc, rt);
+
+    writetable(Data,[expinfo.DataFolder,'Oddball_Subject_',num2str(expinfo.subject),'Exp_Block_', num2str(block_num), '_', num2str(repetition_num), '.csv']);
 
     %% For last trial ITI
     WaitSecs(expinfo.MinITIduration+rand(1)*expinfo.ITIjitter);
