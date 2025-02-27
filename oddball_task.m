@@ -63,18 +63,18 @@ displayInstruction(expinfo, expinfo.InstFolder, 'welcome')
 
 %% Experimental Blocks
 blocks = struct();
-blocks.block_num = 1:4;
+blocks.block_num = 1:6;
 blocks.n_targets = zeros(1, max(blocks.block_num)) - 2;
 blocks.response = zeros(1, max(blocks.block_num)) - 2;
 blocks.rt = zeros(1, max(blocks.block_num)) - 2;
 blocks.acc = zeros(1, max(blocks.block_num)) - 2;
 
 if test_run
-    blocks.n_practice_trials = [1, 0, 1, 0];
-    blocks.n_exp_trials = [1, 1, 1, 1];
+    blocks.n_practice_trials = [1, 0, 0, 0, 0, 0];
+    blocks.n_exp_trials = [1, 1, 1, 1, 1, 1];
 else
-    blocks.n_practice_trials = [10, 0, 10, 0];
-    blocks.n_exp_trials = [10, 10, 10, 10];
+    blocks.n_practice_trials = [10, 0, 0, 0, 0, 0];
+    blocks.n_exp_trials = [20, 20, 20, 20, 20, 20];
 end
 
 expinfo.blocks = blocks;
@@ -108,7 +108,7 @@ for block_num = start_from:max(expinfo.blocks.block_num)
     %% Practice Blocks
     while repeat_practice
         % Show instruction Slide
-        displayInstruction(expinfo, expinfo.InstFolder, 'instructions_resp_c');
+        displayInstruction(expinfo, expinfo.InstFolder, 'instruction_noresp_inst');
     
         % Loop through practice trials
         setMarker(expinfo, expinfo.Marker.PracStart)
@@ -128,7 +128,7 @@ for block_num = start_from:max(expinfo.blocks.block_num)
         setMarker(expinfo, expinfo.Marker.PracEnd)
         
         % Show instruction Slide
-        last_response = displayInstruction(expinfo, expinfo.InstFolder, 'instructions_resp_c', 1);
+        last_response = displayInstruction(expinfo, expinfo.InstFolder, 'instruction_noresp_start', 1);
         
         %last_response = 1;
         if last_response == 9
@@ -150,34 +150,8 @@ for block_num = start_from:max(expinfo.blocks.block_num)
     %% Experimental Block
     setMarker(expinfo, expinfo.Marker.BlockStart)
     
-    pause_50 = 0;
-    %{
-    if n_exp_trials > 30
-        pause_50 = 1;
-    else
-        pause_50 = 0;
-    end
-    %}
-
-    if pause_50
-        for itrial = 1:ceil(n_exp_trials / 2)
-            ExpTrials = DisplayStandardTrial(expinfo, ExpTrials, itrial, block_num, 0);
-        end
-        setMarker(expinfo, expinfo.Marker.BreakStart);
-           
-        Break=[expinfo.InstFolder '/half_break.jpg']; % Eine Folie, dass Exp startete und Aufgabenbeschreibung
-        ima=imread(Break);
-        dImageWait(expinfo,ima);
-       
-        setMarker(expinfo, expinfo.Marker.BreakEnd);
-
-        for itrial = ceil(n_exp_trials/2) + 1:n_exp_trials
-            ExpTrials = DisplayStandardTrial(expinfo, ExpTrials, itrial, block_num, 0);
-        end
-    else
-        for itrial = 1:n_exp_trials
-            ExpTrials = DisplayStandardTrial(expinfo, ExpTrials, itrial, block_num, 0);
-        end
+    for itrial = 1:n_exp_trials
+        ExpTrials = DisplayStandardTrial(expinfo, ExpTrials, itrial, block_num, 0);
     end
 
     [acc, response, correct, rt] = getResponseNTargets(expinfo, n_targets);

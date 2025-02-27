@@ -32,24 +32,24 @@ function expinfo = getExpSettings(expinfo)
     expinfo.Fix_Duration =0; % Dauer des Fixationskreuzes zu Beginn eines Trials
     expinfo.Fixjitter = 0;
         
-    expinfo.MinISIduration = 0.4; % Minimale Dauer des Inter-Stimulus-Intervalls (ISI)
-    expinfo.ISIjitter = 0.2; % ISI Jitter = Intervall in dem das ISI variieren darf
+    % expinfo.MinISIduration = 0.4; % Minimale Dauer des Inter-Stimulus-Intervalls (ISI)
+    % expinfo.ISIjitter = 0.2; % ISI Jitter = Intervall in dem das ISI variieren darf
 
-    expinfo.MinMemSetDelayISI = expinfo.MinISIduration;
-    expinfo.MemSetDelayISIjitter = expinfo.ISIjitter;
+    % expinfo.MinMemSetDelayISI = expinfo.MinISIduration;
+    % expinfo.MemSetDelayISIjitter = expinfo.ISIjitter;
     
-    expinfo.MaxRT = 3; 
+    expinfo.MaxRT = 3;
     expinfo.MinRT = 1;
-    expinfo.StimDuration =1; 
+    expinfo.StimDuration = 0.2; 
     expinfo.Stimjitter = 0;
     
-    expinfo.ProbeDuration =expinfo.MinRT; 
-    expinfo.Probejitter = 0;
+    % expinfo.ProbeDuration =expinfo.MinRT; 
+    % expinfo.Probejitter = 0;
 
-    expinfo.MinProbeDelayISI = expinfo.MinISIduration;
-    expinfo.ProbeDelayISIjitter = expinfo.ISIjitter;
+    % expinfo.MinProbeDelayISI = expinfo.MinISIduration;
+    % expinfo.ProbeDelayISIjitter = expinfo.ISIjitter;
 
-    expinfo.MinITIduration = 1.9; % Minimale Dauer des Inter-Trial-Intervalls (ITI)
+    expinfo.MinITIduration = 1.4; % Minimale Dauer des Inter-Trial-Intervalls (ITI)
     expinfo.ITIjitter =0.2; %ITI Jitter
     expinfo.maxiter =1000;
     
