@@ -63,18 +63,18 @@ displayInstruction(expinfo, expinfo.InstFolder, 'welcome')
 
 %% Experimental Blocks
 blocks = struct();
-blocks.block_num = 1:2;
+blocks.block_num = 1:4;
 blocks.n_targets = zeros(1, max(blocks.block_num)) - 2;
 blocks.response = zeros(1, max(blocks.block_num)) - 2;
 blocks.rt = zeros(1, max(blocks.block_num)) - 2;
 blocks.acc = zeros(1, max(blocks.block_num)) - 2;
 
 if test_run
-    blocks.n_practice_trials = [1, 1];
-    blocks.n_exp_trials = [1, 1];
+    blocks.n_practice_trials = [1, 0, 1, 0];
+    blocks.n_exp_trials = [1, 1, 1, 1];
 else
-    blocks.n_practice_trials = [10, 10];
-    blocks.n_exp_trials = [10, 10];
+    blocks.n_practice_trials = [10, 0, 10, 0];
+    blocks.n_exp_trials = [10, 10, 10, 10];
 end
 
 expinfo.blocks = blocks;
@@ -96,16 +96,19 @@ for block_num = start_from:max(expinfo.blocks.block_num)
     ExpTrials = makeTrials(trial_mat, expinfo, block_num);
 
     if n_practice_trials > 0
+        repeat_practice = 1;
+
         PracTrials = makeTrials(practice_mat, expinfo, block_num);
+    else
+        repetition_practice = 0;
     end
     
-    repeat_practice = 1;
     repetition_num = 1;
 
     %% Practice Blocks
     while repeat_practice
         % Show instruction Slide
-        displayInstruction(expinfo, expinfo.InstFolder, 'instruction');
+        displayInstruction(expinfo, expinfo.InstFolder, 'instructions_resp_c');
     
         % Loop through practice trials
         setMarker(expinfo, expinfo.Marker.PracStart)
@@ -125,8 +128,9 @@ for block_num = start_from:max(expinfo.blocks.block_num)
         setMarker(expinfo, expinfo.Marker.PracEnd)
         
         % Show instruction Slide
-        last_response = displayInstruction(expinfo, expinfo.InstFolder, 'instruction', 1);
-        last_response = 1;
+        last_response = displayInstruction(expinfo, expinfo.InstFolder, 'instructions_resp_c', 1);
+        
+        %last_response = 1;
         if last_response == 9
             practice_mat = zeros(n_practice_trials, 1);
     

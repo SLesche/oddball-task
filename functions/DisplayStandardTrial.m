@@ -34,7 +34,7 @@ next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_memset,Trial(exp
 
 if Trial(expTrial).hasResponse        
     % Get Answer from participant
-    [ACC, response, correct, RT] = getResponseOddball(expinfo, is_target);
+    [ACC, response, correct, RT] = getResponseOddball(expinfo, Trial, expTrial);
     
     % Assign values to dynamically constructed field names
     Trial(expTrial).oddball_acc = ACC;
@@ -43,8 +43,24 @@ if Trial(expTrial).hasResponse
     Trial(expTrial).oddball_response = response;
     Trial(expTrial).oddball_correct = correct;
 
-    if Trial(expTrial).(field_rt) < expinfo.MinRT
-        WaitSecs(expinfo.MinRT-Trial(expTrial).(field_rt));
+    if Trial(expTrial).oddball_rt < expinfo.MinRT
+        WaitSecs(expinfo.MinRT-Trial(expTrial).oddball_rt);
+    end
+
+    if isPractice == 1 % Show feedback in practice trials
+        clearScreen(expinfo);
+        if ACC == 1
+        Trial(expTrial).time_feed = TextCenteredOnPos(expinfo,'Richtig',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.green, next_flip);
+        elseif ACC == 0
+            Trial(expTrial).time_feed= TextCenteredOnPos(expinfo,'Falsch',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.red, next_flip);
+        elseif ACC == -2
+            Trial(expTrial).time_feed= TextCenteredOnPos(expinfo,'zu langsam',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.black, next_flip);
+        elseif ACC == -3
+        Trial(expTrial).time_feed= TextCenteredOnPos(expinfo,'unerlaubte Taste',0.5*expinfo.maxX,0.5*expinfo.maxY,expinfo.Colors.red, next_flip);
+        end
+        next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_feed,expinfo.FeedbackDuration);
+
+        clearScreen(expinfo, next_flip)
     end
     clearScreen(expinfo);
 else

@@ -32,13 +32,23 @@ function [ACC, response, correct, RT] = getResponseOddball(expinfo, Trial, expTr
             % Evaluate the response
             if strcmp(response, correct)
                 ACC = 1;
-                setMarker(expinfo, expinfo.Marker.CorrRespProbe); % Send correct response marker
+                if Trial(expTrial).isTarget
+                    setMarker(expinfo, expinfo.Marker.CorrRespTarget); % Send correct response marker
+                else
+                    setMarker(expinfo, expinfo.Marker.CorrRespNonTarget); % Send correct response marker
+                end
 
                 RT = time - start; % Calculate reaction time
                 break; % Exit the loop
             elseif ismember(response, [Trial(expTrial).targetKey, Trial(expTrial).nonTargetKey]) & ~strcmp(response, correct)
                 ACC = 0;
-                setMarker(expinfo, expinfo.Marker.IncorrRespProbe);
+
+                if Trial(expTrial).isTarget
+                    setMarker(expinfo, expinfo.Marker.IncorrRespTarget); % Send incorrect response marker
+                else
+                    setMarker(expinfo, expinfo.Marker.IncorrRespNonTarget); % Send incorrect response marker
+                end
+
                 RT = time - start; % Calculate reaction time
                 break; % Exit the loop
             else
@@ -51,7 +61,7 @@ function [ACC, response, correct, RT] = getResponseOddball(expinfo, Trial, expTr
     if response == -2
         ACC = -2; % Indicate timeout
         RT = expinfo.MaxRT; % Default reaction time to max allowed
-        setMarker(expinfo, expinfo.Marker.IncorrRespProbe); % Send incorrect response marker
+        setMarker(expinfo, expinfo.Marker.Miss); % Send incorrect response marker
     elseif wrongkey
         ACC = -3; % Indicate wrong key press
     end
