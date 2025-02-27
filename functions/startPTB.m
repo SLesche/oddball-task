@@ -115,7 +115,7 @@ end
 % expinfo.Colors.blue=[0 0 255];
 % expinfo.Colors.green=[0 255 0];
 %% Text Size
-expinfo.FontSize = Screen(expinfo.window,'TextSize',30); 
+expinfo.FontSize = Screen(expinfo.window,'TextSize',60); 
 
 %% Choose fonts likely to be installed on this platform
 switch computer

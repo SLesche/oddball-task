@@ -154,6 +154,8 @@ for block_num = start_from:max(expinfo.blocks.block_num)
         ExpTrials = DisplayStandardTrial(expinfo, ExpTrials, itrial, block_num, 0);
     end
 
+    n_targets = sum(trial_mat, 1);
+
     [acc, response, correct, rt] = getResponseNTargets(expinfo, n_targets);
         
     Data = table(block_num, correct, response, acc, rt);
