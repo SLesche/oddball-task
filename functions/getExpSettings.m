@@ -40,7 +40,7 @@ function expinfo = getExpSettings(expinfo)
     
     expinfo.MaxRT = 3;
     expinfo.MinRT = 1;
-    expinfo.StimDuration = 0.2; 
+    expinfo.StimDuration = 1; 
     expinfo.Stimjitter = 0;
     
     % expinfo.ProbeDuration =expinfo.MinRT; 
