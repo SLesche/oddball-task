@@ -31,7 +31,7 @@ function [ACC, response, correct, RT] = getResponseNTargets(expinfo, n_targets)
     else
         ACC = 0;
         setMarker(expinfo, expinfo.Marker.IncorrResponseOpenQuestion);
-        feedbackMessage = sprintf('Falsch. "X" wurde %d mal präsentiert.', n_targets);
+        feedbackMessage = sprintf('Falsch. "3" wurde %d mal präsentiert.', n_targets);
     end
 
     % Display feedback

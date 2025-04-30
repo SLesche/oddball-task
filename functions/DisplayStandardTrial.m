@@ -6,6 +6,7 @@ end
 
 %% Trial Procedure
 is_target = Trial(expTrial).isTarget;
+
 if is_target
     Trial(expTrial).time_ITI = ScreenFlip(expinfo,[],expinfo.Marker.ITITarget, 0,0);
 else
