@@ -24,6 +24,7 @@ if Trial(expTrial).FIX > 0
     
     next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_FIX,Trial(expTrial).FIX);
 end
+ScreenGridEmpty(expinfo)
 
 if is_target
     Trial(expTrial).time_memset = TextCenteredOnPos(expinfo,expinfo.TargetStim,expinfo.XPos(5),expinfo.YPos(5), expinfo.Colors.black , next_flip, Trial(expTrial).StimMarkerTarget);
@@ -61,11 +62,11 @@ if Trial(expTrial).hasResponse
         end
         next_flip = getAccurateFlip(expinfo.window,Trial(expTrial).time_feed,expinfo.FeedbackDuration);
 
-        clearScreen(expinfo, next_flip)
+        clearScreenGrid(expinfo, next_flip)
     end
-    clearScreen(expinfo);
+    clearScreenGrid(expinfo);
 else
-    clearScreen(expinfo,next_flip);
+    clearScreenGrid(expinfo,next_flip);
 end
 
 SaveTable = orderfields(Trial);
