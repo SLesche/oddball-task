@@ -79,8 +79,8 @@ function expinfo = getExpSettings(expinfo)
     
     %% Defining trials to be conducted
     % Specify how many trials should be conducted
-    expinfo.TargetStim = '3';
-    expinfo.NonTargetStim = '4';
+    expinfo.TargetStim = '7';
+    expinfo.NonTargetStim = '8';
     expinfo.targetProbability = 0.2;
 
     %% Colors
