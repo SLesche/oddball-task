@@ -5,10 +5,10 @@ function [expinfo] = getMarkers(expinfo, block_num)
 
 %% Specify Block Markers for Experiment
 
-    Marker.MatlabStart = 1;
-    Marker.ExpEnd = 2;
-    Marker.BreakStart = 3;
-    Marker.BreakEnd = 4;
+    Marker.MatlabStart = 101;
+    Marker.ExpEnd = 102;
+    Marker.BreakStart = 103;
+    Marker.BreakEnd = 104;
     
 %% Specify Stimulus Markers within each trial
 % Markers for different Screens
