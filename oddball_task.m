@@ -107,7 +107,7 @@ for block_num = start_from:max(expinfo.blocks.block_num)
         if expinfo.blocks.response(block_num) == 0
             displayInstruction(expinfo, expinfo.InstFolder, 'instruction_noresp_inst', 1);
         else
-            displayInstruction(expinfo, expinfo.InstFolder, ['instructions_resp_', expinfo.targetKey], 1);
+            displayInstruction(expinfo, expinfo.InstFolder, ['instruction_resp_', expinfo.targetKey], 1);
         end
             
         % Loop through practice trials
