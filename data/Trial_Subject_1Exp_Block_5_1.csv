@@ -1,2 +1,0 @@
-Block,FIX,FixMarkerNonTarget,FixMarkerTarget,ITI,ITIMarkerNonTarget,ITIMarkerTarget,StimDuration,StimMarkerNonTarget,StimMarkerTarget,Subject,TaskDescription,TrialNum,hasResponse,isTarget,nonTargetKey,oddball_acc,oddball_correct,oddball_istarget,oddball_response,oddball_rt,targetKey,time_ITI,time_memset
-5,0,40,50,1.53888003154555,42,52,1,41,51,1,Oddball_Task,1,1,1,m,1,c,1,c,0.385928400006378,c,84768.7894883,84770.3249421
