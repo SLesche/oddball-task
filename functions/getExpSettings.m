@@ -49,8 +49,8 @@ function expinfo = getExpSettings(expinfo)
     % expinfo.MinProbeDelayISI = expinfo.MinISIduration;
     % expinfo.ProbeDelayISIjitter = expinfo.ISIjitter;
 
-    expinfo.MinITIduration = 1.4; % Minimale Dauer des Inter-Trial-Intervalls (ITI)
-    expinfo.ITIjitter =0.2; %ITI Jitter
+    expinfo.MinITIduration = 0.8; % Minimale Dauer des Inter-Trial-Intervalls (ITI)
+    expinfo.ITIjitter =0.4; %ITI Jitter
     expinfo.maxiter =1000;
     
     expinfo.RespFeedback = 0.3;
