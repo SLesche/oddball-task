@@ -44,9 +44,11 @@ if Trial(expTrial).hasResponse
     Trial(expTrial).oddball_istarget = is_target;
     Trial(expTrial).oddball_response = response;
     Trial(expTrial).oddball_correct = correct;
-
-    if Trial(expTrial).oddball_rt < expinfo.MinRT
-        WaitSecs(expinfo.MinRT-Trial(expTrial).oddball_rt);
+    
+    if (RT + expinfo.PostRespDelay) < expinfo.MinRT
+        WaitSecs(expinfo.MinRT - RT);
+    else
+        WaitSecs(expinfo.PostRespDelay);
     end
 
     if isPractice == 1 % Show feedback in practice trials

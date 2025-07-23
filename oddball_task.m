@@ -14,7 +14,7 @@ addpath('functions', 'instructions', 'data');
 % Define a task name
 TaskName = 'Oddball Task';
 start_from = 1; % Add later block if something crashed
-is_eeg_connected = 0; % Test local = 0; test in lab = 1;
+is_eeg_connected = 1; % Test local = 0; test in lab = 1;
 test_run = 0;
 % Define variables to be specified when the experiment starts.
 vars = {'sub'};

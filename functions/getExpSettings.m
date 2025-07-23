@@ -54,6 +54,7 @@ function expinfo = getExpSettings(expinfo)
     expinfo.maxiter =1000;
     
     expinfo.RespFeedback = 0.3;
+    expinfo.PostRespDelay = 0.5;
     expinfo.CueDuration = 1.8;
     expinfo.Cuejitter = 0.4;
     expinfo.FeedbackDuration = 0.8;
