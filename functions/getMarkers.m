@@ -24,6 +24,7 @@ function [expinfo] = getMarkers(expinfo, block_num)
     Marker.StimTarget = 51; % Marker for task following probe presentation
     Marker.ITINonTarget = 42;
     Marker.ITITarget = 52; % Marker for task following probe presentation
+    Marker.RespOffset = 54;
 
     Marker.CorrRespTarget = 150;
     Marker.IncorrRespTarget = 250;

@@ -22,7 +22,7 @@ while validKey == 0
             end
         elseif strcmp(pressedKey,expinfo.LeftKey) % left key pressed
             % Options = 1 only allow to move foraward
-            if options ~= 1
+            if options ~= 1 & options ~= 9
                 validKey = 1;
             end
             elseif strcmp(pressedKey,expinfo.StartKey) % left key pressed
